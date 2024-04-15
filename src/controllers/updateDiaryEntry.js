@@ -1,7 +1,8 @@
 import Diary from "../models/diary.js";
 
 export  async function handleUpdateDiaryEntry(req, res) {
-  const { title, body, place,diaryId } = req.body;
+  const { title, body, place } = req.body;
+  const {diaryId}=req.params
   const {userId}=req
   try {
     const isUpdated=await Diary.findOneAndUpdate({
@@ -9,11 +10,10 @@ export  async function handleUpdateDiaryEntry(req, res) {
       owner:userId
     },{
       $set:{
-         title,
-      body,
-      place,
+         ...req.body
       }
     })
+    console.log(isUpdated)
     if(!isUpdated){
       throw new Error("Error updating diary entry")
     }

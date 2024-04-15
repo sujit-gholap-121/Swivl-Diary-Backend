@@ -1,6 +1,6 @@
-import Diary from "../models/diary";
+import Diary from "../models/diary.js";
 
-export  async function handleCreateDiaryEntry(req, res) {
+ async function handleDeleteDiaryEntry(req, res) {
     const {diaryId}=req.params
   const {userId}=req
   try {
@@ -23,3 +23,5 @@ export  async function handleCreateDiaryEntry(req, res) {
     });
   }
 }
+
+export default handleDeleteDiaryEntry

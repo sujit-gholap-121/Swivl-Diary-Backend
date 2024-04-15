@@ -1,4 +1,5 @@
 import User from  "../models/user.js"
+import bcrypt from "bcrypt"
 
 async function handleUserRegistration(req, res) {
     // console.log(req.body);

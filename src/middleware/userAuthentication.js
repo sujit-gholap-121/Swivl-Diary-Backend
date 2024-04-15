@@ -15,14 +15,14 @@ async function handleUserAuthentication(req, res, next) {
   if (!findUser) {
     throw new Error("User not Found");
   }
-  req.mobile = mobil;
   req.mobile = mobile;
   req.userId = findUser._id;
   next();
   }
   catch(e){
     res.status(502).json({
-      msg:e.mesaage
+      "flag":false,
+      msg:e.message
     })
   }
 }
