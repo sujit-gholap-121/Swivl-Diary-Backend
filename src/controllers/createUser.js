@@ -1,3 +1,5 @@
+import User from  "../models/user.js"
+
 async function handleUserRegistration(req, res) {
     // console.log(req.body);
     const { name, mobile, email, password } =
