@@ -4,7 +4,7 @@ import handleLoginUser from "../controllers/userLogin.js";
 import handleUserAuthentication from "../middleware/userAuthentication.js";
 import { handleCreateDiaryEntry } from "../controllers/createDiaryEntry.js";
 import { handleUpdateDiaryEntry } from "../controllers/updateDiaryEntry.js";
-import { handleGetDiaryEntry } from "../controllers/getUserDiary.js";
+import { handleGetAllDiaryEntry, handleGetDiaryEntry } from "../controllers/getUserDiary.js";
 import handleDeleteDiaryEntry from "../controllers/deleteDiaryEntry.js";
 
 
@@ -17,6 +17,7 @@ router.route("/login")
 .post(handleLoginUser)
 
 router.route("/diary/")
+.get(handleUserAuthentication,handleGetAllDiaryEntry)
 .post(handleUserAuthentication,handleCreateDiaryEntry)
 
 router.route("/diary/:diaryId")

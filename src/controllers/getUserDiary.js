@@ -19,3 +19,24 @@ export async function handleGetDiaryEntry(req, res) {
     });
   }
 }
+
+
+export async function handleGetAllDiaryEntry(req, res) {
+  // const { diaryId } = req.params;
+  const { userId } = req;
+  console.log(userId);
+  try {
+    const isFound = await Diary.findOne({ owner: userId });
+    if (!isFound) {
+      throw new Error("No diary entry  Found");
+    }
+    res.status(201).json({
+      msg: "Diary Fetched Successfully",
+      result: isFound,
+    });
+  } catch (e) {
+    res.status(502).send({
+      msg: e.message,
+    });
+  }
+}
